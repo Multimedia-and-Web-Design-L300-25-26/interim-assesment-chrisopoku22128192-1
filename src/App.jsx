@@ -1,42 +1,63 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/header';
+import Footer from './components/footer';
+import HeroSection from './components/sections/HeroSection';
+import ExploreCryptoSection from './components/sections/ExploreCryptoSection';
+import AdvancedTraderSection from './components/sections/AdvancedTraderSection';
+import BaseAppSection from './components/sections/BaseAppSection';
+import LearnSection from './components/sections/LearnSection';
+import TakeControlSection from './components/sections/TakeControlSection';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import AccountTypeSelect from './pages/AccountTypeSelect';
+import ForgotPassword from './pages/ForgotPassword';
+import VerifyCode from './pages/VerifyCode';
+import ExplorePage from './pages/ExplorePage';
+import MarketStatsPage from './pages/MarketStatsPage';
+import LearnPage from './pages/LearnPage';
+import CryptoBasicsPage from './pages/CryptoBasicsPage';
+import Loader from './components/ui/Loader';
 
-function App() {
-  const [count, setCount] = useState(0);
+const Home = () => (
+  <div className="min-h-screen flex flex-col">
+    <Header />
+    <main className="flex-1">
+      <HeroSection />
+      <ExploreCryptoSection />
+      <AdvancedTraderSection />
+      <BaseAppSection />
+      <LearnSection />
+      <TakeControlSection />
+    </main>
+    <Footer />
+  </div>
+);
+
+const App = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1800);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <Loader />;
 
   return (
-    <div className="max-w-5xl mx-auto p-8 text-center">
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img
-            src={viteLogo}
-            className="h-24 p-6 transition-[filter] duration-300 hover:drop-shadow-[0_0_2em_#646cffaa]"
-            alt="Vite logo"
-          />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img
-            src={reactLogo}
-            className="h-24 p-6 transition-[filter] duration-300 hover:drop-shadow-[0_0_2em_#61dafbaa] motion-safe:animate-spin-slow"
-            alt="React logo"
-          />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="p-8">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="text-gray-500">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/explore" element={<ExplorePage />} />
+      <Route path="/market-stats" element={<MarketStatsPage />} />
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/account-type" element={<AccountTypeSelect />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/verify" element={<VerifyCode />} />
+      <Route path="/learn" element={<LearnPage />} />
+      <Route path="/learn/crypto-basics" element={<CryptoBasicsPage />} />
+    </Routes>
   );
-}
+};
 
 export default App;
