@@ -271,6 +271,9 @@ const StepEmail = ({ email, setEmail, onNext }) => (
 	<Shell>
 		<form onSubmit={(e) => { e.preventDefault(); if (email.trim()) onNext(); }}>
 			<h1 className="text-[1.75rem] font-bold text-white mb-2">Create your account</h1>
+			<p className="text-[0.8125rem] text-yellow-400 bg-yellow-400/10 border border-yellow-400/20 rounded-lg px-3 py-2 mb-4 text-center">
+				Demo app – do not use your real password.
+			</p>
 			<p className="text-[0.9375rem] text-[#8A919E] mb-6 leading-6">
 				Access all that Coinbase has to offer with a single account.
 			</p>

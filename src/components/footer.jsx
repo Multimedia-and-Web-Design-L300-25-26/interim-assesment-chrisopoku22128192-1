@@ -235,6 +235,11 @@ const Footer = () => {
 						))}
 					</div>
 
+					{/* Disclaimer */}
+					<p className="text-[0.75rem] leading-5 text-[#5B616E] text-center sm:text-left">
+						This is <strong className="text-[#8A919E]">Chris Opoku&apos;s student demo project</strong> built for educational purposes only. It is not affiliated with, endorsed by, or associated with Coinbase, Inc. Do not enter real personal or financial information.
+					</p>
+
 					{/* Divider */}
 					<hr className="w-full border-0 border-t border-gray-15 my-2" />
 

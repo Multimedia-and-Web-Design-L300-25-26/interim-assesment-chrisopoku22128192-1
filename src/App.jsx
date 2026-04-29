@@ -18,6 +18,7 @@ import MarketStatsPage from './pages/MarketStatsPage';
 import LearnPage from './pages/LearnPage';
 import CryptoBasicsPage from './pages/CryptoBasicsPage';
 import Loader from './components/ui/Loader';
+import WarningBanner from './components/WarningBanner';
 
 const Home = () => (
   <div className="min-h-screen flex flex-col">
@@ -45,7 +46,9 @@ const App = () => {
   if (loading) return <Loader />;
 
   return (
-    <Routes>
+    <>
+      <WarningBanner />
+      <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/explore" element={<ExplorePage />} />
       <Route path="/market-stats" element={<MarketStatsPage />} />
@@ -57,6 +60,7 @@ const App = () => {
       <Route path="/learn" element={<LearnPage />} />
       <Route path="/learn/crypto-basics" element={<CryptoBasicsPage />} />
     </Routes>
+    </>
   );
 };
 
